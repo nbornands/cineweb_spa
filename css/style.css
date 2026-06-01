@@ -111,6 +111,32 @@ header {
     background-color: var(--color-accent);
 }
 
+/* HAMBURGER TOGGLE */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text-primary);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 2px;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
 /* HERO SECTION */
 .hero {
     padding: 8rem 0;
@@ -737,14 +763,66 @@ footer {
 
 @media (max-width: 768px) {
     .navbar {
-        height: auto;
-        flex-direction: column;
-        padding: 1.5rem 0;
-        gap: 1rem;
+        height: 80px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        position: relative;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .menu-toggle.active .hamburger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .menu-toggle.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle.active .hamburger-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
     
     .nav-links {
-        gap: 1.5rem;
+        position: absolute;
+        top: 80px;
+        left: -1.5rem;
+        width: calc(100% + 3rem);
+        background-color: var(--bg-primary);
+        border-bottom: 1px solid var(--color-border);
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2.5rem 0;
+        height: auto;
+        z-index: 99;
+        
+        /* Smooth transition */
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    .nav-links.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+    
+    .nav-links li {
+        height: auto;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .nav-links li.active a {
+        color: var(--color-accent);
     }
     
     .nav-links li.active::before {
@@ -762,6 +840,7 @@ footer {
         align-items: center;
         text-align: center;
         margin: 0 auto;
+        width: 100%;
     }
     
     .hero h1 {
@@ -855,6 +934,10 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
     .servicios-grid {
         grid-template-columns: 1fr;
     }

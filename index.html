@@ -74,6 +74,11 @@
                 <a href="/" class="logo">
                     <span class="logo-cine">CINE</span><span class="logo-factor">FACTOR</span>
                 </a>
+                <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
                 <ul class="nav-links">
                     <li class="active"><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
@@ -406,6 +411,42 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            const toggleMenu = () => {
+                const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isOpen);
+                menuToggle.classList.toggle('active');
+                navLinks.classList.toggle('open');
+                document.body.classList.toggle('menu-open', !isOpen);
+            };
+
+            menuToggle.addEventListener('click', toggleMenu);
+
+            // Close menu when a link is clicked
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    if (navLinks.classList.contains('open')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('open') && 
+                    !navLinks.contains(e.target) && 
+                    !menuToggle.contains(e.target)) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
 
 </body>
 
