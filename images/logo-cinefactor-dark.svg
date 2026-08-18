@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205 164" role="img" aria-label="Cinefactor">
+  <g fill="none" stroke="#f4f1ec" stroke-linecap="square" stroke-width="8">
+    <path d="M6 6v34"/>
+    <path d="M6 6h34"/>
+    <path d="M6 158h34"/>
+    <path d="M6 124v34"/>
+    <path d="M199 6h-34"/>
+    <path d="M199 6v34"/>
+    <path d="M199 158h-34"/>
+    <path d="M199 124v34"/>
+  </g>
+  <path d="M101 38H81c-18.225 0-33 14.775-33 33s14.775 33 33 33h20" fill="none" stroke="#f4f1ec" stroke-linecap="butt" stroke-linejoin="round" stroke-width="8"/>
+  <path d="M112 48h7v78h-7Z" fill="#ff621c"/>
+  <path d="M112 48h39v7h-39Z" fill="#ff621c"/>
+  <path d="M112 84h31v7h-31Z" fill="#ff621c"/>
+</svg>
